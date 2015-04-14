@@ -1,0 +1,34 @@
+{
+  "name": "pdfviewer",
+  "description": "PDF Viewer using Mozila PDF JS.",
+  "authors": [],
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:teambition/pdfviewer.git"
+  },
+  "homepage": "https://github.com/teambition/pdfviewer",
+  "keywords": [
+    "pdf",
+    "viewer"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.9.4",
+    "gulp-sequence": "^0.3.2"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "ignore": [
+    "**/.*",
+    "benchmark",
+    "test",
+    "examples",
+    "gulpfile.js",
+    "bower.json",
+    "component.json"
+  ]
+}
