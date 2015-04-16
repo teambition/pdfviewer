@@ -19,7 +19,7 @@ Lightweight PDF viewer using Mozila's [PDF JS](https://github.com/mozilla/pdf.js
 
   1. Run command:
   ```shell
-  npm install && node server
+  npm install && gulp && node server
   ```
 
   2. Go to your browser and open:
