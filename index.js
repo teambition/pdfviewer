@@ -35,6 +35,7 @@
     container.appendChild(iframe)
 
     var self =  this
+    iframe.onload = function() {
       var iwin = iframe.contentWindow
 
       iwin.onerror = function() {
@@ -42,6 +43,7 @@
       }
 
       iwin.FILE_URL = self.url
+    }
 
     return this
 
