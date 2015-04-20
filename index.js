@@ -26,11 +26,15 @@
     ].join('')
 
     var iframe = document.createElement('iframe')
+    iframe.height = '100%'
+    iframe.width = '100%'
+    iframe.frameBorder = 'none'
     iframe.src = "javascript:(function(){document.open();document.write('" + html + "');document.close();}())"
+
+    container.innerHTML = ''
     container.appendChild(iframe)
 
     var self =  this
-    iframe.onload = function() {
       var iwin = iframe.contentWindow
 
       iwin.onerror = function() {
@@ -38,7 +42,6 @@
       }
 
       iwin.FILE_URL = self.url
-    }
 
     return this
 

@@ -3669,7 +3669,6 @@ var PasswordPrompt = {
 
 
 
-var DEFAULT_URL = decodeURIComponent(window.FILE_URL);
 var DEFAULT_SCALE_DELTA = 1.1;
 var MIN_SCALE = 0.25;
 var MAX_SCALE = 10.0;
@@ -3974,10 +3973,13 @@ var PDFViewerApplication = {
         var moreInfo = {
           message: message
         };
-        window.onerror();
-        /* DO NOT SHOW ERROR MESSAGE */
-        //self.error(loadingErrorMessage, moreInfo);
-        self.loading = false;
+        if (typeof window.onerror == 'function') {
+          window.onerror();
+        } else {
+          /* DO NOT SHOW ERROR MESSAGE */
+          self.error(loadingErrorMessage, moreInfo);
+          self.loading = false;
+        }
       }
     );
 
@@ -4387,7 +4389,7 @@ function webViewerLoad() {
 
 function webViewerInitialized(file) {
 //#if (GENERIC || B2G)
-  var file = DEFAULT_URL || '';
+  var file = decodeURIComponent(window.FILE_URL || '');
 
 //#if !(FIREFOX || MOZCENTRAL)
   var locale = PDFJS.locale || navigator.language;
