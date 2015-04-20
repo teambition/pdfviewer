@@ -1337,6 +1337,7 @@ function getPDFFileNameFromURL(url) {
       }
     }
   }
+
   return suggestedFilename || 'document.pdf';
 }
 
@@ -3668,7 +3669,7 @@ var PasswordPrompt = {
 
 
 
-var DEFAULT_URL = '';
+var DEFAULT_URL = decodeURIComponent(window.FILE_URL);
 var DEFAULT_SCALE_DELTA = 1.1;
 var MIN_SCALE = 0.25;
 var MAX_SCALE = 10.0;
@@ -3973,7 +3974,9 @@ var PDFViewerApplication = {
         var moreInfo = {
           message: message
         };
-        self.error(loadingErrorMessage, moreInfo);
+        window.onerror();
+        /* DO NOT SHOW ERROR MESSAGE */
+        //self.error(loadingErrorMessage, moreInfo);
         self.loading = false;
       }
     );
@@ -4130,6 +4133,7 @@ var PDFViewerApplication = {
     var downloadedPromise = pdfDocument.getDownloadInfo().then(function() {
       self.downloadComplete = true;
       self.loadingBar.hide();
+      document.querySelector('.toolbar').style.opacity = 1;
     });
 
     var pagesCount = pdfDocument.numPages;
@@ -4383,10 +4387,7 @@ function webViewerLoad() {
 
 function webViewerInitialized(file) {
 //#if (GENERIC || B2G)
-  var queryString = document.location.search.substring(1);
-  var params = PDFViewerApplication.parseQueryString(queryString);
-  var file = 'file' in params ? params.file : DEFAULT_URL;
-  var file = file || DEFAULT_URL;
+  var file = DEFAULT_URL || '';
 
 //#if !(FIREFOX || MOZCENTRAL)
   var locale = PDFJS.locale || navigator.language;

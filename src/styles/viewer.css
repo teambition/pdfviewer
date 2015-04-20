@@ -313,6 +313,12 @@ html[dir='ltr'] #viewerContainer {
   width: 200px;
   background: rgba(0,0,0,.6);
   display: inline-block;
+  opacity: 0;
+  -webkit-transition: opacity .2s ease;
+  -moz-transition: opacity .2s ease;
+  -ms-transition: opacity .2s ease;
+  -o-transition: opacity .2s ease;
+  transition: opacity .2s ease;
 }
 
 #toolbarContainer {
