@@ -386,6 +386,7 @@ html[dir='ltr'] .splitToolbarButton {
 
 .splitToolbarButton > .toolbarButton {
   position: relative;
+  cursor: pointer;
 }
 
 html[dir='ltr'] .splitToolbarButton > .toolbarButton:first-child {
