@@ -1943,6 +1943,7 @@ var PDFViewer = (function pdfViewer() {
       return firstPagePromise.then(function(pdfPage) {
         var scale = this._currentScale || 1.0;
         var viewport = pdfPage.getViewport(scale * CSS_UNITS);
+        this.viewportWidth = viewport.width;
         for (var pageNum = 1; pageNum <= pagesCount; ++pageNum) {
           var textLayerFactory = null;
           if (!PDFJS.disableTextLayer) {
@@ -3224,6 +3225,12 @@ var PDFViewerApplication = {
 
     this.setScale(scale, true);
     this.page = 1;
+
+    // Set scale based on container width, if given
+    if (!!window.containerWidth) {
+      var newScale = window.containerWidth / this.pdfViewer.viewportWidth;
+      this.setScale(newScale, true);
+    }
 
     if (this.pdfViewer.currentScale === UNKNOWN_SCALE) {
       // Scale was not initialized: invalid bookmark or scale was not specified.

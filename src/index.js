@@ -48,6 +48,7 @@
     }
 
     win.FILE_URL = self.pdfUrl;
+    win.containerWidth = container.offsetWidth;
 
     return this;
 
