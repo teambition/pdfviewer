@@ -46,7 +46,7 @@ Lightweight PDF viewer using Mozila's [PDF JS](https://github.com/mozilla/pdf.js
     URL to your pdf file, can be relative or absolute. If it is a cross-domain path, the remote server must support [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS).
 
   2. **staticHost**(required):
-    Static files host, PdfViewer dependents on Mozila's `PDF.js` and our `viewer.js`, which msut be served.
+    Static files host, PdfViewer dependents on Mozila's `PDF.js` and our `viewer.js`, which must be served.
 
   3. **onerror**(optional):
     A custom `onerror` callback function, if error occurs when reading or rendering your pdf file, this function will be called.
@@ -63,7 +63,7 @@ Lightweight PDF viewer using Mozila's [PDF JS](https://github.com/mozilla/pdf.js
 
   2. Go to your browser and open:
   ```
-  http://localhost:8000/index.html
+  http://localhost:8000/examples/index.html
   ```
 
 ## Who's using
