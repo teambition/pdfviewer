@@ -16,13 +16,15 @@
         width: 100%;
       }
     </style>
-    <script src="src/index.js"></script>
+    <script src="/dist/index.js"></script>
   </head>
 
   <body>
     <div id="container"></div>
     <script>
-      new PdfViewer({pdfUrl: 'http://localhost:8000/examples/sample.pdf', staticHost: 'http://localhost:8000/src'}).embed(document.getElementById('container'))
+      new PdfViewer({pdfUrl: '/examples/sample.pdf', staticHost: '/dist', onerror: function(err) {
+        console.error('PdfViewer', err);
+      }}).embed(document.getElementById('container'))
     </script>
   </body>
 </html>

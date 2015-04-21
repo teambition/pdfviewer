@@ -25,7 +25,7 @@ html {
 body {
   height: 100%;
   background-color: #404040;
-  background-image: url(images/texture.png);
+  background-image: url(../images/texture.png);
 }
 
 body,
@@ -111,7 +111,7 @@ button {
   overflow: visible;
   border: 9px solid transparent;
   background-clip: content-box;
-  border-image: url(images/shadow.png) 9 9 repeat;
+  border-image: url(../images/shadow.png) 9 9 repeat;
   background-color: white;
   box-sizing: content-box;
 }
@@ -133,7 +133,7 @@ button {
   top: 0;
   right: 0;
   bottom: 0;
-  background: url('images/loading-icon.gif') center no-repeat;
+  background: url('../images/loading-icon.gif') center no-repeat;
 }
 
 .pdfViewer .page .annotLink > a:hover {
@@ -474,19 +474,19 @@ html[dir='ltr'] .toolbarButton:last-child {
 }
 
 .toolbarButton.zoomOut::before {
-  content: url(images/toolbarButton-zoomOut.png);
+  content: url(../images/toolbarButton-zoomOut.png);
 }
 
 .toolbarButton.zoomIn::before {
-  content: url(images/toolbarButton-zoomIn.png);
+  content: url(../images/toolbarButton-zoomIn.png);
 }
 
 .toolbarButton.print::before {
-  content: url(images/toolbarButton-print.png);
+  content: url(../images/toolbarButton-print.png);
 }
 
 .toolbarButton.download::before {
-  content: url(images/toolbarButton-download.png);
+  content: url(../images/toolbarButton-download.png);
 }
 
 .toolbarField {
@@ -598,7 +598,7 @@ html[dir='ltr'] .toolbarButton:last-child {
   line-height: 14px;
   background-color: #474747;
   /* fallback */
-  background-image: url(images/texture.png),
+  background-image: url(../images/texture.png),
                     linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
   box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08),
               inset 0 1px 1px hsla(0,0%,0%,.15),
@@ -705,19 +705,19 @@ html[dir='ltr'] #documentPropertiesOverlay .row > * {
   }
 
   .toolbarButton.zoomIn::before {
-    content: url(images/toolbarButton-zoomIn@2x.png);
+    content: url(../images/toolbarButton-zoomIn@2x.png);
   }
 
   .toolbarButton.zoomOut::before {
-    content: url(images/toolbarButton-zoomOut@2x.png);
+    content: url(../images/toolbarButton-zoomOut@2x.png);
   }
 
   .toolbarButton.print::before {
-    content: url(images/toolbarButton-print@2x.png);
+    content: url(../images/toolbarButton-print@2x.png);
   }
 
   .toolbarButton.download::before {
-    content: url(images/toolbarButton-download@2x.png);
+    content: url(../images/toolbarButton-download@2x.png);
   }
 }
 
