@@ -2673,6 +2673,9 @@ var DISABLE_AUTO_FETCH_LOADING_BAR_TIMEOUT = 5000;
 
 var mozL10n = document.mozL10n || document.webL10n;
 
+PDFJS.cMapUrl = '../bcmaps/';
+PDFJS.cMapPacked = true;
+
 //#include ui_utils.js
 //#include preferences.js
 

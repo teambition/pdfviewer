@@ -31,6 +31,11 @@ gulp.task('pdfjs', function(){
   ).pipe(uglify()).pipe(gulp.dest('dist/js'));
 });
 
+gulp.task('bcmaps', function(){
+  return gulp.src('bower_components/pdf.js/external/bcmaps/*.bcmap')
+    .pipe(gulp.dest('dist/bcmaps'))
+});
+
 gulp.task('others', function(){
   return merge2([
     gulp.src(['src/locale/**', 'src/images/**'], {base: 'src'}),
@@ -42,4 +47,4 @@ gulp.task('others', function(){
 gulp.task('default', ['build']);
 
 gulp.task('test', gulpSequence('jshint'));
-gulp.task('build', gulpSequence('clean', 'pdfjs', 'others'));
+gulp.task('build', gulpSequence('clean', 'pdfjs', 'bcmaps', 'others'));
