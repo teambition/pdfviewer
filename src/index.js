@@ -49,6 +49,7 @@
 
     win.FILE_URL = self.pdfUrl;
     win.containerWidth = container.clientWidth;
+    win.staticHost = this.staticHost;
 
     return this;
 
