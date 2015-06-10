@@ -7,6 +7,7 @@ var clean = require('gulp-rimraf');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
 var minifyCss = require('gulp-minify-css');
+var minifyHtml = require('gulp-minify-html');
 var gulpSequence = require('gulp-sequence');
 
 gulp.task('clean', function() {
@@ -39,8 +40,9 @@ gulp.task('bcmaps', function(){
 gulp.task('others', function(){
   return merge2([
     gulp.src(['src/locale/**', 'src/images/**'], {base: 'src'}),
-    gulp.src('src/css/*.css', {base: 'src'}).pipe(minifyCss()),
-    gulp.src('src/index.js' , {base: 'src'}).pipe(uglify())
+    gulp.src('src/css/*.css', {base: 'src'}).pipe(minifyCss({rebase: false})),
+    gulp.src('src/index.html', {base: 'src'}).pipe(minifyHtml()),
+    gulp.src('src/pdfviewer.js' , {base: 'src'}).pipe(uglify())
   ]).pipe(gulp.dest('dist'));
 });
 

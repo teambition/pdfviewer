@@ -11,17 +11,17 @@ Lightweight PDF viewer using Mozila's [PDF JS](https://github.com/mozilla/pdf.js
 
 ## Pre-requirments
 
-  Make sure `pdf.js`, `pdf.worker.js`, `viewer.js` and `viewer.css` is served by your own static server.
+  Make sure `dist/index.html`(and JS/CSS resources it needed) is served by your own static server.
 
-  You can clone our project, run command `node server` to start a simple static server to serve these files.
+  You can clone our project, run command `python -m simpleHTTPServer` to start a simple static server to serve these files.
 
 ## Usage
 
-  1. Include `src/index.js` in your html file:
+  1. Include `src/pdfviewer.js` in your html file:
   ```html
   <head>
     ...
-    <script src="pdfviewer/dist/index.js"></script>
+    <script src="pdfviewer/dist/pdfviewer.js"></script>
     ...
   </head>
 
@@ -32,7 +32,7 @@ Lightweight PDF viewer using Mozila's [PDF JS](https://github.com/mozilla/pdf.js
   </body>
   ```
 
-  2. Once you include `index.js`, you have a `PdfViewer` object, it takes a plain object as argument, and then you can `embed` it to your document, `#container` in this case:
+  2. Once you include `pdfviewer.js`, you have a `PdfViewer` object, it takes a plain object as argument, and then you can `embed` it to your document, `#container` in this case:
   ```javascript
   new PdfViewer({pdfUrl: 'path/to/your/file', staticHost: 'path/to/your/static/host'}).embed(document.getElementById('container'))
   ```
@@ -58,7 +58,7 @@ Lightweight PDF viewer using Mozila's [PDF JS](https://github.com/mozilla/pdf.js
 
   1. Run command:
   ```shell
-  npm install && gulp build && node server
+  python -m simpleHTTPServer
   ```
 
   2. Go to your browser and open:

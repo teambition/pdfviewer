@@ -2,7 +2,7 @@
   "name": "pdfviewer",
   "description": "PDF Viewer using Mozila PDF JS.",
   "main": "index.js",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "homepage": "https://github.com/teambition/pdfviewer",
   "authors": [],
   "keywords": [

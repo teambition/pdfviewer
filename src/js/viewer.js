@@ -2673,7 +2673,7 @@ var DISABLE_AUTO_FETCH_LOADING_BAR_TIMEOUT = 5000;
 
 var mozL10n = document.mozL10n || document.webL10n;
 
-PDFJS.cMapUrl = window.staticHost + '/bcmaps/';
+PDFJS.cMapUrl = '../bcmaps/';
 PDFJS.cMapPacked = true;
 
 //#include ui_utils.js
@@ -2973,10 +2973,10 @@ var PDFViewerApplication = {
         var moreInfo = {
           message: message
         };
-        if (typeof window.onerror == 'function') {
-          window.onerror();
+        if (parent !== window && typeof window.postMessage === 'function') {
+          /* Tell parent something wrong happened */
+          parent.window.postMessage(loadingErrorMessage, '*');
         } else {
-          /* DO NOT SHOW ERROR MESSAGE */
           self.error(loadingErrorMessage, moreInfo);
           self.loading = false;
         }
@@ -3230,8 +3230,10 @@ var PDFViewerApplication = {
     this.page = 1;
 
     // Set scale based on container width, if given
-    if (!!window.containerWidth) {
-      var newScale = window.containerWidth / this.pdfViewer.viewportWidth;
+    var queryString = document.location.search.substring(1);
+    var params = PDFViewerApplication.parseQueryString(queryString);
+    if (!!params.width) {
+      var newScale = params.width / this.pdfViewer.viewportWidth;
       this.setScale(newScale, true);
     }
 
@@ -3261,6 +3263,7 @@ var PDFViewerApplication = {
       var param = parts[i].split('=');
       var key = param[0].toLowerCase();
       var value = param.length > 1 ? param[1] : null;
+      value = value.replace(/\/$/g, '')
       params[decodeURIComponent(key)] = decodeURIComponent(value);
     }
     return params;
@@ -3395,7 +3398,9 @@ function webViewerLoad() {
 
 function webViewerInitialized(file) {
 //#if (GENERIC || B2G)
-  var file = decodeURIComponent(window.FILE_URL || '');
+  var queryString = document.location.search.substring(1);
+  var params = PDFViewerApplication.parseQueryString(queryString);
+  var file = params.file || '';
 
 //#if !(FIREFOX || MOZCENTRAL)
   var locale = PDFJS.locale || navigator.language;

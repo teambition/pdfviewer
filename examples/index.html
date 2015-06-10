@@ -22,7 +22,7 @@
   <body>
     <div id="container"></div>
     <script>
-      new PdfViewer({pdfUrl: '/examples/sample.pdf', staticHost: '/dist', onerror: function(err) {
+      new PdfViewer({pdfUrl: '/examples/sample.pdf', staticHost: '/dist/', onerror: function(err) {
         console.error('PdfViewer', err);
       }}).embed(document.getElementById('container'))
     </script>
