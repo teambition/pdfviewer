@@ -3,7 +3,7 @@
   "description": "PDF Viewer using Mozila PDF JS.",
   "authors": [],
   "version": "0.3.0",
-  "main": "index.js",
+  "main": "src/pdfviewer.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:teambition/pdfviewer.git"
