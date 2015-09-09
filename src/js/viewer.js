@@ -3401,6 +3401,7 @@ function webViewerInitialized(file) {
   var queryString = document.location.search.substring(1);
   var params = PDFViewerApplication.parseQueryString(queryString);
   var file = params.file || '';
+  var download = params.download || false;
 
 //#if !(FIREFOX || MOZCENTRAL)
   var locale = PDFJS.locale || navigator.language;
@@ -3431,20 +3432,25 @@ function webViewerInitialized(file) {
   document.getElementById('zoomIn').addEventListener('click',
     function() {
       PDFViewerApplication.zoomIn();
-    });
+  });
 
   document.getElementById('zoomOut').addEventListener('click',
     function() {
       PDFViewerApplication.zoomOut();
-    });
+  });
 
-  document.getElementById('print').addEventListener('click',
-    function() {
-      window.print();
+  if (download) {
+    document.getElementById('print').addEventListener('click',
+      function() {
+        window.print();
     });
-
-  document.getElementById('download').addEventListener('click',
-    PDFViewerApplication.download.bind(PDFViewerApplication));
+    document.getElementById('download').addEventListener('click',
+      PDFViewerApplication.download.bind(PDFViewerApplication)
+    );
+  } else {
+    document.getElementById('print').remove();
+    document.getElementById('download').remove();
+  }
 
 //#if GENERIC
   if (file && file.lastIndexOf('file:', 0) === 0) {

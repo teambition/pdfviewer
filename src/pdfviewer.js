@@ -11,6 +11,7 @@
     this.pdfUrl = opts.pdfUrl || '';
     this.onerror = opts.onerror || null;
     this.staticHost = opts.staticHost || '';
+    this.download = opts.download || '';
   }
 
   PdfViewer.prototype.embed = function(container) {
@@ -20,7 +21,7 @@
     iframe.height = '100%';
     iframe.width = '100%';
     iframe.frameBorder = 'none';
-    iframe.src = this.staticHost + '?file=' + encodeURIComponent(this.pdfUrl) + '&width=' + container.clientWidth;
+    iframe.src = this.staticHost + '?file=' + encodeURIComponent(this.pdfUrl) + '&width=' + container.clientWidth + '&download=' + this.download;
 
     container.innerHTML = '';
     container.appendChild(iframe);
