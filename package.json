@@ -2,8 +2,8 @@
   "name": "pdfviewer",
   "description": "PDF Viewer using Mozila PDF JS.",
   "authors": [],
-  "version": "0.3.1",
-  "main": "src/pdfviewer.js",
+  "version": "0.3.2",
+  "main": "dist/pdfviewer.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:teambition/pdfviewer.git"
@@ -28,13 +28,7 @@
   "scripts": {
     "test": "gulp test"
   },
-  "ignore": [
-    "**/.*",
-    "benchmark",
-    "test",
-    "examples",
-    "gulpfile.js",
-    "bower.json",
-    "component.json"
+  "files": [
+    "dist"
   ]
 }
