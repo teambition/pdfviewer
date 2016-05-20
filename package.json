@@ -1,0 +1,14 @@
+{
+  "name": "pdfviewer",
+  "version": "1.0.0",
+  "description": "PDF Viewer using Mozila PDF JS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pdf"
+  ],
+  "author": "Boshen <boshenc@gmail.com>",
+  "license": "MIT"
+}
