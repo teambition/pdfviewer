@@ -4,11 +4,25 @@
   "description": "PDF Viewer using Mozila PDF JS.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --progress",
+    "start": "webpack-dev-server --hot --progress"
   },
   "keywords": [
     "pdf"
   ],
   "author": "Boshen <boshenc@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "copy-webpack-plugin": "^3.0.0",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.17.0",
+    "url-loader": "^0.5.7",
+    "webl10n": "^1.0.0",
+    "webpack": "^1.13.0"
+  },
+  "dependencies": {
+    "pdfjs-dist": "1.5.262"
+  }
 }
