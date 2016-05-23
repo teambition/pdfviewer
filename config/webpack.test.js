@@ -47,14 +47,6 @@ module.exports = {
       inject: 'body'
     }),
 
-    new CopyWebpackPlugin([{
-      from: 'src/example.pdf'
-    }]),
-
-    new CopyWebpackPlugin([{
-      from: 'src/password.pdf'
-    }]),
-
     new webpack.HotModuleReplacementPlugin(),
 
     new webpack.NoErrorsPlugin()

@@ -39,6 +39,14 @@ module.exports = merge(commonConfig, {
     new CopyWebpackPlugin([{
       from: 'src/example.pdf'
     }]),
+
+    new CopyWebpackPlugin([{
+      from: 'src/password.pdf'
+    }]),
+
+    new CopyWebpackPlugin([{
+      from: 'src/chinese.pdf'
+    }])
   ]
 
 })
