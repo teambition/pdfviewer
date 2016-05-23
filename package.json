@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --progress --config ./config/webpack.prod.js",
-    "start": "webpack-dev-server --hot --progress --config ./config/webpack.dev.js"
+    "dev-server": "webpack-dev-server --hot --progress --port 9000 --config ./config/webpack.dev.js",
+    "test-server": "webpack-dev-server --hot --progress --port 9001 --config ./config/webpack.test.js",
+    "start": "run-p dev-server test-server"
   },
   "keywords": [
     "pdf"
@@ -19,6 +21,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.17.0",
+    "npm-run-all": "^2.1.1",
     "url-loader": "^0.5.7",
     "webl10n": "^1.0.0",
     "webpack": "^1.13.0",

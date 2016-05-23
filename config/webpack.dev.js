@@ -3,7 +3,6 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const commonConfig = require('./webpack.common.js')
 
@@ -22,12 +21,11 @@ module.exports = merge(commonConfig, {
     'index': [
       './src/index.js',
       'webpack/hot/dev-server',
-      'webpack-dev-server/client?http://localhost:8080/'
+      'webpack-dev-server/client?http://localhost:9000/'
     ]
   },
 
   output: {
-    filename: '[name].js',
     pathinfo: true
   },
 
@@ -36,12 +34,10 @@ module.exports = merge(commonConfig, {
       __PROD__: false
     }),
 
-    new ExtractTextPlugin('[name].css'),
-
     new webpack.HotModuleReplacementPlugin(),
 
     new CopyWebpackPlugin([{
-      from: 'src/compressed.tracemonkey-pldi-09.pdf'
+      from: 'src/example.pdf'
     }]),
   ]
 

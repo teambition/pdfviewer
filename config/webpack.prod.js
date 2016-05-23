@@ -9,16 +9,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const commonConfig = require('./webpack.common.js')
 
 module.exports = merge(commonConfig, {
-  output: {
-    filename: '[name].[hash:8].js'
-  },
-
   plugins: [
     new webpack.DefinePlugin({
       __PROD__: true
     }),
-
-    new ExtractTextPlugin('[name].[hash:8].css'),
 
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '../'),

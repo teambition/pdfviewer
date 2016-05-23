@@ -15,6 +15,7 @@ module.exports = {
   },
 
   output: {
+    filename: '[name].js',
     path: path.resolve('./dist'),
   },
 
@@ -40,22 +41,32 @@ module.exports = {
   },
 
   plugins: [
+    new ExtractTextPlugin('[name].css'),
+
+    new CopyWebpackPlugin([{
+      from: 'src/pdfviewer.js',
+    }]),
+
     new CopyWebpackPlugin([{
       from: 'src/locale',
       to: 'locale'
     }]),
+
     new CopyWebpackPlugin([{
       from: 'src/images',
       to: 'images'
     }]),
+
     new CopyWebpackPlugin([{
       from: 'node_modules/pdfjs-dist/cmaps',
       to: 'cmaps'
     }]),
+
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: 'head'
     }),
+
     new webpack.NoErrorsPlugin()
   ]
 }
