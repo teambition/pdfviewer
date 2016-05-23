@@ -51,6 +51,10 @@ module.exports = {
       from: 'src/example.pdf'
     }]),
 
+    new CopyWebpackPlugin([{
+      from: 'src/password.pdf'
+    }]),
+
     new webpack.HotModuleReplacementPlugin(),
 
     new webpack.NoErrorsPlugin()
