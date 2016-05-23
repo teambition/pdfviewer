@@ -37,16 +37,8 @@ module.exports = merge(commonConfig, {
     new webpack.HotModuleReplacementPlugin(),
 
     new CopyWebpackPlugin([{
-      from: 'src/example.pdf'
+      from: 'pdf'
     }]),
-
-    new CopyWebpackPlugin([{
-      from: 'src/password.pdf'
-    }]),
-
-    new CopyWebpackPlugin([{
-      from: 'src/chinese.pdf'
-    }])
   ]
 
 })
