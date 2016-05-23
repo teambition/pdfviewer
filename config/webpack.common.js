@@ -11,7 +11,8 @@ module.exports = {
   errorDetails: true,
 
   entry: {
-    'index': ['./src/index.js']
+    'index': './src/index.js',
+    'index.worker': 'pdfjs-dist/build/pdf.worker.entry.js'
   },
 
   output: {
