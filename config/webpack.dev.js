@@ -32,6 +32,10 @@ module.exports = merge(commonConfig, {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      __PROD__: false
+    }),
+
     new ExtractTextPlugin('[name].css'),
 
     new webpack.HotModuleReplacementPlugin(),
