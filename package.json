@@ -2,7 +2,12 @@
   "name": "pdfviewer",
   "version": "1.0.0",
   "description": "PDF Viewer using Mozila PDF JS.",
-  "main": "dist/pdfviewer.js",
+  "main": "src/pdfviewer.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:teambition/pdfviewer.git"
+  },
+  "homepage": "https://github.com/teambition/pdfviewer",
   "scripts": {
     "build": "webpack --progress --config ./config/webpack.prod.js",
     "dev-server": "webpack-dev-server --hot --progress --port 9000 --config ./config/webpack.dev.js",
@@ -22,13 +27,14 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.17.0",
     "npm-run-all": "^2.1.1",
+    "pdfjs-dist": "1.5.262",
     "url-loader": "^0.5.7",
     "webl10n": "^1.0.0",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.12.0"
   },
-  "dependencies": {
-    "pdfjs-dist": "1.5.262"
-  }
+  "files": [
+    "src/pdfviewer.js"
+  ]
 }
