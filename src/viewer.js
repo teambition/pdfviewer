@@ -7641,6 +7641,9 @@ var PDFViewerApplication = {
         };
         self.error(loadingErrorMessage, moreInfo);
 
+        if (window.parent !== window && typeof window.postMessage === 'function') {
+          window.parent.window.postMessage(loadingErrorMessage, '*')
+        }
         throw new Error(loadingErrorMessage);
       }
     );
