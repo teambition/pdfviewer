@@ -44,10 +44,6 @@ module.exports = {
     new ExtractTextPlugin('[name].css'),
 
     new CopyWebpackPlugin([{
-      from: 'src/pdfviewer.js',
-    }]),
-
-    new CopyWebpackPlugin([{
       from: 'src/locale',
       to: 'locale'
     }]),

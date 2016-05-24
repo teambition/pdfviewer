@@ -42,9 +42,9 @@ module.exports = merge(commonConfig, {
 
     new CopyWebpackPlugin([{
       from: 'pdf'
-    }])
+    }]),
 
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ]
 
 })
