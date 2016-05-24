@@ -4,7 +4,6 @@ const webpack = require('webpack')
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 
@@ -62,11 +61,6 @@ module.exports = {
       from: 'node_modules/pdfjs-dist/cmaps',
       to: 'cmaps'
     }]),
-
-    new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      inject: 'head'
-    }),
 
     new webpack.NoErrorsPlugin()
   ]

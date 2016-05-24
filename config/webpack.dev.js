@@ -3,6 +3,7 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const commonConfig = require('./webpack.common.js')
 
@@ -30,15 +31,20 @@ module.exports = merge(commonConfig, {
   },
 
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: 'head'
+    }),
+
     new webpack.DefinePlugin({
       __PROD__: false
     }),
 
-    new webpack.HotModuleReplacementPlugin(),
-
     new CopyWebpackPlugin([{
       from: 'pdf'
-    }]),
+    }])
+
+    new webpack.HotModuleReplacementPlugin(),
   ]
 
 })
