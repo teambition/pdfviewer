@@ -3968,11 +3968,9 @@ var mozL10n = uiUtils.mozL10n;
  *   of the secondary toolbar.
  * @property {HTMLButtonElement} presentationModeButton - Button for entering
  *   presentation mode.
- * @property {HTMLButtonElement} openFileButton - Button to open a file.
  * @property {HTMLButtonElement} printButton - Button to print the document.
  * @property {HTMLButtonElement} downloadButton - Button to download the
  *   document.
- * @property {HTMLLinkElement} viewBookmarkButton - Button to obtain a bookmark
  *   link to the current location in the document.
  * @property {HTMLButtonElement} firstPageButton - Button to go to the first
  *   page in the document.
@@ -4003,10 +4001,8 @@ var SecondaryToolbar = (function SecondaryToolbarClosure() {
     this.buttons = [
       { element: options.presentationModeButton, eventName: 'presentationmode',
         close: true },
-      { element: options.openFileButton, eventName: 'openfile', close: true },
       { element: options.printButton, eventName: 'print', close: true },
       { element: options.downloadButton, eventName: 'download', close: true },
-      { element: options.viewBookmarkButton, eventName: null, close: true },
       { element: options.firstPageButton, eventName: 'firstpage', close: true },
       { element: options.lastPageButton, eventName: 'lastpage', close: true },
       { element: options.pageRotateCwButton, eventName: 'rotatecw',
@@ -8233,13 +8229,7 @@ function webViewerInitialized() {
   fileInput.setAttribute('type', 'file');
   fileInput.oncontextmenu = noContextMenuHandler;
   document.body.appendChild(fileInput);
-
-  if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
-    appConfig.toolbar.openFile.setAttribute('hidden', 'true');
-    appConfig.secondaryToolbar.openFileButton.setAttribute('hidden', 'true');
-  } else {
-    fileInput.value = null;
-  }
+  fileInput.value = null;
 
 
   var PDFJS = pdfjsLib.PDFJS;
@@ -8306,7 +8296,14 @@ function webViewerInitialized() {
 
   mozL10n.setLanguage(PDFJS.locale);
 
-  if (!PDFViewerApplication.supportsPrinting) {
+  var supportDownload = !!params['download'];
+
+  if (!supportDownload) {
+    appConfig.toolbar.download.classList.add('hidden');
+    appConfig.secondaryToolbar.downloadButton.classList.add('hidden');
+  }
+
+  if (!PDFViewerApplication.supportsPrinting || !supportDownload) {
     appConfig.toolbar.print.classList.add('hidden');
     appConfig.secondaryToolbar.printButton.classList.add('hidden');
   }
@@ -8381,17 +8378,15 @@ function webViewerInitialized() {
 
   });
 
-  appConfig.toolbar.openFile.addEventListener('click', function (e) {
-    PDFViewerApplication.eventBus.dispatch('openfile');
-  });
+  if (supportDownload) {
+    appConfig.toolbar.print.addEventListener('click', function (e) {
+      PDFViewerApplication.eventBus.dispatch('print');
+    });
 
-  appConfig.toolbar.print.addEventListener('click', function (e) {
-    PDFViewerApplication.eventBus.dispatch('print');
-  });
-
-  appConfig.toolbar.download.addEventListener('click', function (e) {
-    PDFViewerApplication.eventBus.dispatch('download');
-  });
+    appConfig.toolbar.download.addEventListener('click', function (e) {
+      PDFViewerApplication.eventBus.dispatch('download');
+    });
+  }
 
   Promise.all(waitForBeforeOpening).then(function () {
     webViewerOpenFileViaURL(file);
@@ -8554,9 +8549,6 @@ function webViewerUpdateViewarea(e) {
   }
   var href =
     PDFViewerApplication.pdfLinkService.getAnchorUrl(location.pdfOpenParams);
-  PDFViewerApplication.appConfig.toolbar.viewBookmark.href = href;
-  PDFViewerApplication.appConfig.secondaryToolbar.viewBookmarkButton.href =
-    href;
 
   // Update the current bookmark in the browsing history.
   PDFViewerApplication.pdfHistory.updateCurrentBookmark(location.pdfOpenParams,
@@ -8650,7 +8642,6 @@ function webViewerFileInputChange(e) {
   // URL does not reflect proper document location - hiding some icons.
   var appConfig = PDFViewerApplication.appConfig;
   appConfig.toolbar.viewBookmark.setAttribute('hidden', 'true');
-  appConfig.secondaryToolbar.viewBookmarkButton.setAttribute('hidden', 'true');
   appConfig.toolbar.download.setAttribute('hidden', 'true');
   appConfig.secondaryToolbar.downloadButton.setAttribute('hidden', 'true');
 }
@@ -9160,10 +9151,8 @@ function getViewerConfiguration() {
       toggleButton: document.getElementById('secondaryToolbarToggle'),
       presentationModeButton:
         document.getElementById('secondaryPresentationMode'),
-      openFileButton: document.getElementById('secondaryOpenFile'),
       printButton: document.getElementById('secondaryPrint'),
       downloadButton: document.getElementById('secondaryDownload'),
-      viewBookmarkButton: document.getElementById('secondaryViewBookmark'),
       firstPageButton: document.getElementById('firstPage'),
       lastPageButton: document.getElementById('lastPage'),
       pageRotateCwButton: document.getElementById('pageRotateCw'),

@@ -6,6 +6,7 @@ var onError = console.error.bind(console)
 // normal case
 var config1 = {
   pdfUrl: '/example.pdf',
+  download: false,
   staticHost: staticHost,
   onError: onError
 }
@@ -15,6 +16,7 @@ new PdfViewer(config1).embed(document.getElementById('container1'))
 var config2 = {
   pdfUrl: '/password.pdf',
   staticHost: staticHost,
+  download: true,
   onError: onError
 }
 
