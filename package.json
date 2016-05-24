@@ -2,7 +2,7 @@
   "name": "pdfviewer",
   "version": "1.0.0",
   "description": "PDF Viewer using Mozila PDF JS.",
-  "main": "index.js",
+  "main": "dist/pdfviewer.js",
   "scripts": {
     "build": "webpack --progress --config ./config/webpack.prod.js",
     "dev-server": "webpack-dev-server --hot --progress --port 9000 --config ./config/webpack.dev.js",
