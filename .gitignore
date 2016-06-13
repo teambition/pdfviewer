@@ -1,7 +1,2 @@
-node_modules/
-bower_components/
-debug/
-test.js
-
-npm-debug.log
-.DS_Store
+node_modules
+dist

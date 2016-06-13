@@ -11,32 +11,16 @@ Lightweight PDF viewer using Mozilla's [PDF JS](https://github.com/mozilla/pdf.j
 
 ## Pre-requirments
 
-  Make sure `dist/index.html`(and JS/CSS resources it needed) is served by your own static server.
+  ```
+  npm install
+  npm run build
+  ```
 
-  You can clone our project, run command `python -m simpleHTTPServer` to start a simple static server to serve these files.
+  Deploy `dist` to your own static server.
 
 ## Usage
 
-  1. Include `src/pdfviewer.js` in your html file:
-  ```html
-  <head>
-    ...
-    <script src="pdfviewer/dist/pdfviewer.js"></script>
-    ...
-  </head>
-
-  <body>
-    ...
-    <div id="container"></div>
-    ...
-  </body>
-  ```
-
-  2. Once you include `pdfviewer.js`, you have a `PdfViewer` object, it takes a plain object as argument, and then you can `embed` it to your document, `#container` in this case:
-  ```javascript
-  new PdfViewer({pdfUrl: 'path/to/your/file', staticHost: 'path/to/your/static/host'}).embed(document.getElementById('container'))
-  ```
-  >*note*: The container you are going to embed to must be in the DOM tree already when you do the embed action.
+  See example in [test](./test) directory
 
 ## Options
 
@@ -54,16 +38,21 @@ Lightweight PDF viewer using Mozilla's [PDF JS](https://github.com/mozilla/pdf.j
 
 ## Examples
 
-  Follow these steps to get a demo:
+  To get a demo:
 
   1. Run command:
   ```shell
-  python -m simpleHTTPServer
+  npm start
   ```
 
-  2. Go to your browser and open:
+  2. Test viewer.js:
   ```
-  http://localhost:8000/examples/index.html
+  http://localhost:9000
+  ```
+
+  3. Test pdfviewer.js (viewer.js in iframe):
+  ```
+  http://localhost:9001
   ```
 
 ## Who's using
