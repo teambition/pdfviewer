@@ -12,7 +12,8 @@
     "build": "webpack --progress --config ./config/webpack.prod.js",
     "dev-server": "webpack-dev-server --hot --progress --port 9000 --config ./config/webpack.dev.js",
     "test-server": "webpack-dev-server --hot --progress --port 9001 --config ./config/webpack.test.js",
-    "start": "run-p dev-server test-server"
+    "start": "run-p dev-server test-server",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "pdf"
