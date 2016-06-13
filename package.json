@@ -35,6 +35,7 @@
     "webpack-merge": "^0.12.0"
   },
   "files": [
-    "src/pdfviewer.js"
+    "src/pdfviewer.js",
+    "dist/"
   ]
 }
