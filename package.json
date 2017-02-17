@@ -28,7 +28,7 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.17.0",
     "npm-run-all": "^2.1.1",
-    "pdfjs-dist": "1.5.262",
+    "pdfjs-dist": "1.7.297",
     "url-loader": "^0.5.7",
     "webl10n": "^1.0.0",
     "webpack": "^1.13.0",
