@@ -1,6 +1,6 @@
 {
   "name": "pdfviewer",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "PDF Viewer using Mozila PDF JS.",
   "main": "src/pdfviewer.js",
   "repository": {
